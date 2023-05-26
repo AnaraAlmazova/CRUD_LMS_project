@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/{id}(id=${userUpdate.getId()})}"
+      th:method="post"
+      th:object="${uzerUpdate}">
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label"> username</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp1" class="form-text"></div>
+
+        <label for="exampleInputEmail1" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="exampleInputEmail"
+               aria-describedby="emailHelp">
+        <div id="name" class="form-text"></div>
+
+        <label for="exampleInputPassword2" class="form-label">Email</label>
+        <input type="text" class="form-control" id="exampleInputPassword">
+        <div id="email" class="form-text"></div>
+
+
+        <label for="exampleInputPassword" class="form-label">Age</label>
+        <input type="text" class="form-control" id="exampleInputPassword2">
+        <div id="age" class="form-text"></div>
+
+        <label for="exampleInputPassword" class="form-label">Password</label>
+        <input type="text" class="form-control" id="exampleInputPassword1">
+        <div id="password" class="form-text"></div>
+
+        <label for="exampleInputPassword" class="form-label">Role name</label>
+        <input type="text" class="form-control" id="exampleInputPassword3">
+        <div id="roleName" class="form-text"></div>
+    </div>
+
+
+</form>
+</body>
+</html>

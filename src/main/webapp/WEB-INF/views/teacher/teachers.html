@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        div {
+            height: 400px;
+            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)
+        }
+    </style>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr class="table-danger">
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Students</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="teacher:${teachers}">
+        <td th:text="${teacher.id}"></td>
+        <td class="table-secondary" th:text="${teacher.firstName}"></td>
+        <td class="table-secondary" th:text="${teacher.lastName}"></td>
+        <td class="table-secondary" th:text="${teacher.email}"></td>
+
+        <td>
+            <a th:href="@{/teachers/update/{id}(id=${teacher.id})}">
+                <button style="height: auto; background-color: cyan">Update</button>
+            </a>
+        </td>
+        <td>
+            <form th:method="Delete" th:action="@{/teachers/delete(id=${teacher.id})}">
+                <button type="submit" style="height: auto; background-color: yellow">Delete</button>
+            </form>
+        </td>
+        <td><a th:href="@{/teachers/students/{teacherId}(teacherId=${teacher.getId()})}">
+            <button style="height: 40px; width: 80px; background-color: darkturquoise">Get Students</button></a></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/teachers/addTeacher" tabindex="0" class="btn btn-lg btn-warning" role="button" data-bs-toggle="popover" data-bs-trigger="focus">Add</a>
+
+<!--<form>-->
+<!--    <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="Add Company" onclick="window.location.href = 'companies/addCompany'">-->
+<!--</form>-->
+<br>
+<p>&#128151;</p>
+<div>
+    <a th:href="@{/}">
+        <button >Go back</button>
+    </a>
+</div>
+<a href="/companies" class="floating-button">Company</a>
+<a href="/courses" class="floating-button">Course</a>
+<a href="/groups" class="floating-button">Group</a>
+<a href="/students" class="floating-button">Student</a>
+<a href="/teachers" class="floating-button">Teacher</a>
+
+</body>

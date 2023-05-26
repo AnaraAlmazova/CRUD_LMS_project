@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        div {
+            height: 400px;
+            background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)
+        }
+
+
+    </style>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr class="table-danger">
+        <th scope="col">#</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Located Country</th>
+        <th scope="col">Course</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Students</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company:${companies}">
+        <td th:text="${company.id}"></td>
+        <td class="table-secondary" th:text="${company.companyName}"></td>
+        <td class="table-secondary" th:text="${company.locatedCountry}"></td>
+        <td>
+            <a th:href="@{/companies/courses/{companyId}(companyId=${company.id})}">
+                <button style="height: auto; background-color: green">course</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/companies/update/{id}(id=${company.id})}">
+                <button style="height: auto; background-color: cyan">Update</button>
+            </a>
+        </td>
+        <td>
+            <form th:method="Delete" th:action="@{/companies/delete(id=${company.id})}">
+                <button type="submit" style="height: auto; background-color: yellow">Delete</button>
+            </form>
+        </td>
+
+        <td><a th:href="@{/companies/students/{companyId}(companyId=${company.getId()})}">
+        <button style="height: 40px; width: 80px; background-color: mediumturquoise;">Student</button></a></td>
+
+    </tr>
+    </tbody>
+</table>
+<a href="/companies/addCompany" tabindex="0" class="btn btn-lg btn-warning" role="button" data-bs-toggle="popover" data-bs-trigger="focus">Add</a>
+
+<!--<form>-->
+<!--    <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="Add Company" onclick="window.location.href = 'companies/addCompany'">-->
+<!--</form>-->
+<br>
+<br>
+
+<p style="font-size:48px">
+    &#128512; &#128516; &#128525; &#128151;
+</p>
+<p>&#128512;</p>
+
+
+<div>
+    <a th:href="@{/}">
+        <button >Go back</button>
+    </a>
+</div>
+</body>
+</html>

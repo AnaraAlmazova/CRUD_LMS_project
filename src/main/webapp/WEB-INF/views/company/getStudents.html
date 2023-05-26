@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>size student</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <style>
+    div {
+      height: 400px;
+      background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)
+    }
+  </style>
+</head>
+<body>
+<h3>Count</h3>
+<h1 th:name="count" th:text="${count}"></h1>
+<table class="table">
+
+<table  class="table">
+  <thead>
+  <tr class="table-danger">
+    <th scope="col">#</th>
+    <th scope="col">FirstName</th>
+    <th scope="col">LastName</th>
+    <th scope="col">Email</th>
+    <th scope="col">Study Format</th>
+    <th scope="col">Group</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="getStudent:${students}">
+    <th scope="row" th:text="${getStudent.id}"></th>
+    <td th:text="${getStudent.firstName}"></td>
+    <td th:text="${getStudent.lastName}"></td>
+    <td th:text="${getStudent.email}"></td>
+    <td th:text="${getStudent.studyFormat}"></td>
+    <td th:text="${getStudent.getGroup().getGroupName()}"></td></tr>
+
+  </tbody>
+
+</table>
+<p class="w3-xlarge"></p>
+<br>
+<br>
+<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Back"
+       onclick="window.location.href = '/companies'">
+<br>
+
+
+</table>
+</body>
+</html>

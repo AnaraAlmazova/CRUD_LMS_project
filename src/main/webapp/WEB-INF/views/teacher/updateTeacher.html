@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <style>
+            body {
+                -webkit-animation: colorchange 60s infinite;
+                animation: colorchange 60s infinite;
+            }
+            @-webkit-keyframes colorchange {
+                0%  {background: #33FFF3;}
+                25%  {background: #78281F;}
+                50%  {background: #117A65;}
+                75%  {background: #DC7633;}
+                100% {background: #9B59B6;}
+            }
+            @keyframes colorchange {
+                0%  {background: #33FFF3;}
+                25%  {background: #78281F;}
+                50%  {background: #117A65;}
+                75%  {background: #DC7633;}
+                100% {background: #9B59B6;}
+            }
+        </style>
+
+    </head>
+
+
+    <meta charset="UTF-8">
+    <title>Update teacher</title>
+
+
+</head>
+<body>
+<div class="text-bg-light p-3">
+
+    <form th:action="@{/teachers/{id}(id=${teacher.getId()})}"
+          th:object="${teacher}"
+          th:method="patch">
+
+        <input th:field="*{firstName}">
+        <input  th:field="*{email}" >
+        <input  th:field="*{lastName}" >
+        <br>
+        <br>
+
+
+        <input type="submit" value="Update">
+
+    </form>
+
+
+    </header>
+    <div>
+        <a th:href="@{/}">
+            <button >Go back</button>
+        </a>
+    </div>
+
+</div>
+
+
+</body>
+</html>

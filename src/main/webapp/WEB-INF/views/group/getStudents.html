@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<style>
+  body {
+    -webkit-animation: colorchange 60s infinite;
+    animation: colorchange 60s infinite;
+  }
+  @-webkit-keyframes colorchange {
+    0%  {background: #33FFF3;}
+    25%  {background: #78281F;}
+    50%  {background: #117A65;}
+    75%  {background: #DC7633;}
+    100% {background: #9B59B6;}
+  }
+  @keyframes colorchange {
+    0%  {background: #33FFF3;}
+    25%  {background: #78281F;}
+    50%  {background: #117A65;}
+    75%  {background: #DC7633;}
+    100% {background: #9B59B6;}
+  }
+</style>
+
+</head>
+
+
+<body>
+<div class="search" >
+    <br>
+    <form th:action="@{search}"
+          th:method="get"style=" text-align: left; margin-top:100px; font-size: 80px;">
+
+      <input type="text"  name="name" th:value="${name}"  class="searchTern" placeholder="Search">
+      <br>
+      <br>
+      <input type="submit" value="search">
+    </form>
+  </div>
+<br>
+
+<table class="table">
+  <thead>
+  <tr class="table-danger">
+    <th scope="col">#</th>
+    <th scope="col">FirstName</th>
+    <th scope="col">LastName</th>
+    <th scope="col">Email</th>
+    <th scope="col">Study Format</th>
+    <th scope="col">Group</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="student:${students}">
+    <th th:text="${student.id}"></th>
+    <td th:text="${student.firstName}"></td>
+    <td th:text="${student.lastName}"></td>
+    <td th:text="${student.email}"></td>
+    <td th:text="${student.studyFormat}"></td>
+    <td th:text="${student.getGroup().getGroupName()}"></td>
+
+
+
+  </tr>
+  </tbody>
+
+</table>
+<br>
+<br>
+<p>&#128512;</p>
+<div>
+  <a th:href="@{/}">
+    <button >Go back</button>
+  </a>
+</div>
+
+  <a href="/groups/search" tabindex="0" class="btn btn-lg btn-warning" role="button" data-bs-toggle="popover" data-bs-trigger="focus">search</a>
+<a href="/companies" class="floating-button">Company</a>
+<a href="/courses" class="floating-button">Course</a>
+<a href="/groups" class="floating-button">Group</a>
+<a href="/students" class="floating-button">Student</a>
+<a href="/teachers" class="floating-button">Teacher</a>
+
+</body>
+</html>

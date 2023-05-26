@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <style>
+    body {
+      -webkit-animation: colorchange 60s infinite;
+      animation: colorchange 60s infinite;
+    }
+    @-webkit-keyframes colorchange {
+      0%  {background: #33FFF3;}
+      25%  {background: #78281F;}
+      50%  {background: #117A65;}
+      75%  {background: #DC7633;}
+      100% {background: #9B59B6;}
+    }
+    @keyframes colorchange {
+      0%  {background: #33FFF3;}
+      25%  {background: #78281F;}
+      50%  {background: #117A65;}
+      75%  {background: #DC7633;}
+      100% {background: #9B59B6;}
+    }
+  </style>
+
+</head>
+
+
+<meta charset="UTF-8">
+<title>Add Course</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="text-bg-light p-3">
+
+  <h2>Add Course</h2>
+  <form th:action="@{saveCourse}"
+        th:method="post"
+        th:object="${course}">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Course Name</label>
+      <input type="text" th:field="*{courseName}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Duration month</label>
+      <input type="text" th:field="*{durationMonth}" class="form-control" id="exampleInputPassword1">
+    </div>
+    <select th:field="*{companyId}">
+      <option th:each="company:${companyList}"
+              th:value="${company.id}"
+              th:text="${company.companyName}"></option>
+    </select>
+
+    <button type="submit" class="btn btn-success">Add Course</button>
+<!--    <a href="/courses/addCourse" tabindex="0" class="btn btn-lg btn-warning" role="button" data-bs-toggle="popover" data-bs-trigger="focus">Add</a>-->
+
+  </form>
+  <p>&#128512;</p>
+  <div>
+    <a th:href="@{/}">
+      <button >Go back</button>
+    </a>
+  </div>
+  <a href="/companies" class="floating-button">Company</a>
+  <a href="/courses" class="floating-button">Course</a>
+  <a href="/groups" class="floating-button">Group</a>
+  <a href="/students" class="floating-button">Student</a>
+  <a href="/teachers" class="floating-button">Teacher</a>
+
+</div>
+</body>
+</html>
